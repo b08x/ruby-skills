@@ -3,9 +3,9 @@
 ## For Claude: When to Run Tests
 
 **Run these tests automatically when:**
-- You modify any `.sh` script in either plugin
+- You modify any `.sh` script in the plugin
 - You change detection logic in `detect.sh` or `detect-all-managers.sh`
-- Before committing changes to either plugin
+- Before committing changes
 - When debugging issues reported by the user
 
 **Minimum verification before any commit:**
@@ -14,35 +14,26 @@
 
 ## Project Structure
 
-This repository is a **plugin marketplace** containing two plugins:
+This repository is a **plugin marketplace** containing one plugin:
 
 ```
 ruby-skills/                            # Marketplace root
 ├── .claude-plugin/
 │   └── marketplace.json                # Marketplace definition
 ├── plugins/
-│   ├── ruby-skills/                    # Plugin: version manager detection
-│   │   ├── .claude-plugin/plugin.json
-│   │   ├── hooks/
-│   │   │   ├── hooks.json
-│   │   │   └── session-start.sh
-│   │   └── skills/
-│   │       ├── ruby-version-manager/
-│   │       │   ├── SKILL.md
-│   │       │   ├── detect.sh
-│   │       │   ├── detect-all-managers.sh
-│   │       │   └── set-preference.sh
-│   │       └── ruby-resource-map/
-│   │           └── SKILL.md            # Authoritative resource map
-│   └── ruby-lsp/                       # Plugin: LSP integration
+│   └── ruby-skills/                    # Plugin: version manager detection
 │       ├── .claude-plugin/plugin.json
-│       ├── .lsp.json
 │       ├── hooks/
 │       │   ├── hooks.json
-│       │   └── check-ruby-lsp.sh
-│       ├── scripts/
-│       │   └── launch-ruby-lsp.sh
-│       └── README.md
+│       │   └── session-start.sh
+│       └── skills/
+│           ├── ruby-version-manager/
+│           │   ├── SKILL.md
+│           │   ├── detect.sh
+│           │   ├── detect-all-managers.sh
+│           │   └── set-preference.sh
+│           └── ruby-resource-map/
+│               └── SKILL.md            # Authoritative resource map
 ├── CLAUDE.md                           # This file
 └── README.md                           # User documentation
 ```
@@ -142,18 +133,7 @@ These instructions mirror content in SKILL.md. When updating either file:
 
 ## Versioning
 
-This repo has two levels of versioning:
-
-| Version | Location | When to bump |
-|---------|----------|--------------|
-| **Plugin version** | `plugins/<name>/.claude-plugin/plugin.json` AND `.claude-plugin/marketplace.json` (plugin entry) | When that plugin's code/functionality changes |
-| **Marketplace version** | `.claude-plugin/marketplace.json` (`metadata.version`) | When marketplace structure changes (add/remove plugins, change metadata) |
-
-**Key principle:** Plugins are independently versioned. Don't bump the marketplace version for every plugin change.
-
-Example:
-- Adding a feature to ruby-skills → bump ruby-skills to `0.3.0`, leave marketplace at `0.2.0`
-- Adding a new plugin to marketplace → bump marketplace version
+Plugin version is declared in the marketplace entry (`plugins[].version` in `.claude-plugin/marketplace.json`), not in the individual `plugin.json`. Bump the version when the plugin's code or functionality changes.
 
 ## Common Issues
 
@@ -171,60 +151,3 @@ The `ACTIVATION_COMMAND` must use explicit `chruby <version>`, not `auto.sh`. Th
 
 Expected behavior. Claude Code runs each Bash command in a fresh shell. Always chain: `ACTIVATION && ruby_command`.
 
-## ruby-lsp Plugin
-
-### Overview
-
-The `plugins/ruby-lsp/` directory contains a Claude Code LSP plugin that provides Ruby language server integration. It depends on the `ruby-skills` plugin for Ruby environment detection.
-
-**Important:** Requires `ENABLE_LSP_TOOL=1` environment variable due to a known Claude Code race condition bug.
-
-### Architecture
-
-```
-plugins/ruby-lsp/
-├── .claude-plugin/
-│   └── plugin.json        # Plugin manifest
-├── .lsp.json              # LSP server configuration
-├── hooks/
-│   ├── hooks.json         # Hook configuration
-│   └── check-ruby-lsp.sh  # SessionStart hook - early warnings
-├── scripts/
-│   └── launch-ruby-lsp.sh # LSP launcher - detection + activation + launch
-└── README.md              # User documentation
-```
-
-### Key Design Decisions
-
-1. **Separate plugin from ruby-skills**: Keeps LSP concerns isolated; users can install version manager support without LSP, or both.
-
-2. **Standard plugin structure**: Each plugin has its own `.claude-plugin/plugin.json` and configuration files, following the pattern established by other Claude Code plugin marketplaces.
-
-3. **Depends on ruby-skills' detect.sh**: Reuses existing detection logic rather than duplicating. The launcher script finds detect.sh from the installed ruby-skills plugin in the cache.
-
-4. **Auto-install ruby-lsp gem**: If the gem isn't installed for the detected Ruby version, the launcher installs it automatically. Progress is logged to stderr (visible to user).
-
-5. **SessionStart hook for early warnings**: Checks dependencies at session start so users see problems before trying to use LSP features.
-
-6. **Explicit failure on NEEDS_USER_CHOICE**: When multiple version managers are detected without a preference, the launcher fails with clear instructions rather than guessing.
-
-### Testing
-
-**Automated (script-level):**
-- Test detect.sh produces expected output in Ruby projects
-- Test hook script handles missing ruby-skills gracefully
-- Test launcher script handles NEEDS_USER_CHOICE case
-
-**Manual (plugin-level):**
-- Install both plugins from marketplace
-- Ensure `ENABLE_LSP_TOOL=1` is set
-- Test in Ruby project: hover, go-to-definition, diagnostics
-- Test auto-install flow by uninstalling ruby-lsp gem first
-- Test multiple manager scenario by removing preference
-
-### Known Limitations
-
-- Requires `ENABLE_LSP_TOOL=1` environment variable (Claude Code bug workaround)
-- `${CLAUDE_PLUGIN_ROOT}` in `.lsp.json` is used for the launch script path
-- Each Bash command runs in fresh shell, so activation must be chained with ruby-lsp launch
-- Some version managers (like chruby) use undefined variables, requiring `set +u` in subshells
