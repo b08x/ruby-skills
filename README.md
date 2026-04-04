@@ -2,7 +2,7 @@
 
 Ruby's ecosystem has many version managers, a rapidly evolving typing and tooling landscape, and documentation scattered across multiple sources.
 
-This Claude Code plugin helps Claude navigate each of these — activating the correct Ruby environment and pointing to authoritative docs.
+This Claude Code plugin helps Claude navigate each of these — activating the correct Ruby environment, pointing to authoritative docs, and avoiding common test framework pitfalls.
 
 ## Installation
 
@@ -43,6 +43,19 @@ Points Claude to authoritative documentation sources so it doesn't hallucinate A
 - Core vs bundled vs default gem distinctions
 - Ruby typing ecosystem: Sorbet (RBI) and RBS, including Tapioca, Spoom, Steep, and RBS inline comments
 - Blocks known-bad sources (ruby-doc.org, apidock.com)
+
+### `ruby-test-frameworks`
+
+Divergence reference for minitest and test-unit — the two frameworks have deceptively similar APIs with critical naming differences that cause `NoMethodError` at runtime.
+
+- Side-by-side assertion naming mismatches (`assert_raises` vs `assert_raise`, `refute_*` vs `assert_not_*`, etc.)
+- CLI flag comparison for test selection (by name, line number, class, pattern)
+- Lifecycle differences (`startup`/`shutdown`/`cleanup` in test-unit, `before_setup`/`after_teardown` in minitest)
+- Rails-specific aliases that blur the line between the two frameworks
+
+#### Why not RSpec?
+
+RSpec has a distinct API (`describe`/`it`/`expect`) that doesn't overlap with minitest or test-unit. LLMs rarely confuse it with other frameworks, so a divergence reference isn't needed.
 
 ## Acknowledgements
 

@@ -8,8 +8,8 @@
     {
       "name": "ruby-skills",
       "source": "./plugins/ruby-skills",
-      "description": "Ruby version manager detection, environment setup, and more",
-      "version": "0.5.0"
+      "description": "Ruby version manager detection, authoritative resource map, and test framework reference",
+      "version": "0.6.0"
     }
   ]
 }
