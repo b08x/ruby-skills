@@ -24,11 +24,25 @@ claude plugin install ruby-skills@ruby-skills
 
 After installation, start a Claude Code session in any Ruby project — no configuration needed. The plugin activates automatically.
 
-- Detects your version manager and project Ruby version, then activates it for all commands
-- Supports chruby, rbenv, rvm, asdf, mise, rv, and shadowenv
-- Provides Claude with a curated map of authoritative documentation sources, including version-specific docs and the references about the Ruby typing ecosystem
+### `ruby-version-manager`
+
+Detects your version manager and project Ruby version, then activates it for every shell command. Supports chruby, rbenv, rvm, asdf, mise, rv, and shadowenv.
+
+- Reads `.ruby-version`, `.tool-versions`, `.mise.toml`, or `Gemfile` to determine the required version
+- Handles multi-manager environments — prompts you to set a preference if more than one is detected
+- Offers to install missing Ruby versions
+- Works around Claude Code's non-persistent shell by chaining activation with every command
 
 See the [technical reference](plugins/ruby-skills/skills/ruby-version-manager/README.md) for detection internals.
+
+### `ruby-resource-map`
+
+Points Claude to authoritative documentation sources so it doesn't hallucinate APIs or rely on outdated references.
+
+- Version-specific docs for Ruby 3.2–4.0 and master
+- Core vs bundled vs default gem distinctions
+- Ruby typing ecosystem: Sorbet (RBI) and RBS, including Tapioca, Spoom, Steep, and RBS inline comments
+- Blocks known-bad sources (ruby-doc.org, apidock.com)
 
 ## Acknowledgements
 
