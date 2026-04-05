@@ -29,6 +29,8 @@ Authoritative resource map for Ruby development. Use these sources rather than s
 | Bundled gem | Ships with Ruby, can uninstall/replace |
 | Standard library | Part of Ruby itself, not a gem |
 
+To check which gem versions ship with each Ruby release: <https://stdgems.org/>
+
 | Version | Documentation | Standard Library |
 | ------- | ------------- | ---------------- |
 | 3.2 | <https://docs.ruby-lang.org/en/3.2/> | <https://docs.ruby-lang.org/en/3.2/standard_library_rdoc.html> |
@@ -36,6 +38,14 @@ Authoritative resource map for Ruby development. Use these sources rather than s
 | 3.4 | <https://docs.ruby-lang.org/en/3.4/> | <https://docs.ruby-lang.org/en/3.4/standard_library_md.html> |
 | 4.0 | <https://docs.ruby-lang.org/en/4.0/> | <https://docs.ruby-lang.org/en/4.0/standard_library_md.html> |
 | master | <https://docs.ruby-lang.org/en/master/> | <https://docs.ruby-lang.org/en/master/standard_library_md.html> |
+
+## Testing Frameworks
+
+| Framework | GitHub | Documentation |
+| --------- | ------ | ------------- |
+| minitest | <https://github.com/minitest/minitest> | <https://docs.seattlerb.org/minitest/> |
+| test-unit | <https://github.com/test-unit/test-unit> | <https://test-unit.github.io/> |
+
 
 ## Typing Ecosystem
 

@@ -21,7 +21,7 @@ ruby-skills/                            # Marketplace root
 ├── .claude-plugin/
 │   └── marketplace.json                # Marketplace definition
 ├── plugins/
-│   └── ruby-skills/                    # Plugin: version manager detection
+│   └── ruby-skills/                    # Plugin
 │       ├── .claude-plugin/plugin.json
 │       ├── hooks/
 │       │   ├── hooks.json
@@ -32,8 +32,10 @@ ruby-skills/                            # Marketplace root
 │           │   ├── detect.sh
 │           │   ├── detect-all-managers.sh
 │           │   └── set-preference.sh
-│           └── ruby-resource-map/
-│               └── SKILL.md            # Authoritative resource map
+│           ├── ruby-resource-map/
+│           │   └── SKILL.md            # Authoritative resource map
+│           └── ruby-test-frameworks/
+│               └── SKILL.md            # minitest vs test-unit divergences
 ├── CLAUDE.md                           # This file
 └── README.md                           # User documentation
 ```
