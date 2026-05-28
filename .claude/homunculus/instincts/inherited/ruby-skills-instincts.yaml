@@ -1,0 +1,356 @@
+# Instincts generated from https://github.com/b08x/ruby-skills
+# Generated: 2026-05-28T01:21:04.136Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: ruby-skills-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Commit Length
+
+## Action
+
+Write moderate-length commit messages (~53 characters)
+
+## Evidence
+
+- Average commit message length: 53 chars
+- Based on 5 commits
+
+---
+id: ruby-skills-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Naming Files
+
+## Action
+
+Use PascalCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: PascalCase
+
+---
+id: ruby-skills-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: ruby-skills-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: ruby-skills-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: ruby-skills-workflow-add-or-update-skill
+trigger: "when doing add or update skill"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Workflow Add Or Update Skill
+
+## Action
+
+Follow the add-or-update-skill workflow:
+1. Create or update SKILL.md in plugins/ruby-skills/skills/<skill-name>/
+2. Update plugins/ruby-skills/.claude-plugin/plugin.json to register the skill
+3. Update .claude-plugin/marketplace.json to reflect the new or changed skill
+4. Update README.md and CLAUDE.md to document the skill and its usage
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: plugins/ruby-skills/skills/*/SKILL.md, plugins/ruby-skills/.claude-plugin/plugin.json, .claude-plugin/marketplace.json
+
+---
+id: ruby-skills-workflow-remove-plugin
+trigger: "when doing remove plugin"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/b08x/ruby-skills
+---
+
+# Ruby Skills Workflow Remove Plugin
+
+## Action
+
+Follow the remove-plugin workflow:
+1. Delete the plugin directory and all its files
+2. Remove the plugin entry from .claude-plugin/marketplace.json
+3. Update or remove related sections in README.md and CLAUDE.md
+4. Update plugins/ruby-skills/.claude-plugin/plugin.json if necessary
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: plugins/<plugin-name>/**, .claude-plugin/marketplace.json, README.md
+
+---
+id: ruby-skills-instinct-file-naming
+trigger: "When creating or renaming a file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct File Naming
+
+## Action
+
+Use PascalCase for file names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.files
+
+---
+id: ruby-skills-instinct-function-naming
+trigger: "When defining a function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Function Naming
+
+## Action
+
+Use camelCase for function names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.functions
+
+---
+id: ruby-skills-instinct-class-naming
+trigger: "When defining a class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Class Naming
+
+## Action
+
+Use PascalCase for class names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.classes
+
+---
+id: ruby-skills-instinct-constant-naming
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Constant Naming
+
+## Action
+
+Use SCREAMING_SNAKE_CASE for constant names
+
+## Evidence
+
+- Pattern in codeStyle.namingConventions.constants
+
+---
+id: ruby-skills-instinct-relative-imports
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Relative Imports
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in codeStyle.importStyle
+
+---
+id: ruby-skills-instinct-named-exports
+trigger: "When exporting from a module"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Named Exports
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in codeStyle.exportStyle
+
+---
+id: ruby-skills-instinct-separate-tests
+trigger: "When adding or updating tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Separate Tests
+
+## Action
+
+Place test files in a separate directory from source code
+
+## Evidence
+
+- Pattern in architecture.testLocation
+
+---
+id: ruby-skills-instinct-commit-freeform
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Commit Freeform
+
+## Action
+
+Use a freeform message without a strict prefix, keep it concise (around 50 characters)
+
+## Evidence
+
+- Pattern in commits.type
+- Average length in commits.averageLength
+- Examples in commits.examples
+
+---
+id: ruby-skills-instinct-add-or-update-skill-workflow
+trigger: "When introducing a new Ruby skill or updating an existing one"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Add Or Update Skill Workflow
+
+## Action
+
+Follow the steps: 1) Create/update SKILL.md in plugins/ruby-skills/skills/<skill-name>/, 2) Update plugins/ruby-skills/.claude-plugin/plugin.json, 3) Update .claude-plugin/marketplace.json, 4) Update README.md and CLAUDE.md
+
+## Evidence
+
+- Workflow: add-or-update-skill
+- Commits: Create or update SKILL.md in plugins/ruby-skills/skills/<skill-name>/
+- Update plugins/ruby-skills/.claude-plugin/plugin.json to register the skill
+- Update .claude-plugin/marketplace.json to reflect the new or changed skill
+- Update README.md and CLAUDE.md to document the skill and its usage
+
+---
+id: ruby-skills-instinct-remove-plugin-workflow
+trigger: "When deprecating or removing a plugin"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: b08x/ruby-skills
+---
+
+# Ruby Skills Instinct Remove Plugin Workflow
+
+## Action
+
+Follow the steps: 1) Delete the plugin directory and all its files, 2) Remove the plugin entry from .claude-plugin/marketplace.json, 3) Update or remove related sections in README.md and CLAUDE.md, 4) Update plugins/ruby-skills/.claude-plugin/plugin.json if necessary
+
+## Evidence
+
+- Workflow: remove-plugin
+- Commits: Delete the plugin directory and all its files
+- Remove the plugin entry from .claude-plugin/marketplace.json
+- Update or remove related sections in README.md and CLAUDE.md
+- Update plugins/ruby-skills/.claude-plugin/plugin.json if necessary
+
