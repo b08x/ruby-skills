@@ -1,0 +1,41 @@
+{
+  "name": "ruby-skills",
+  "version": "0.6.0",
+  "description": "Ruby development skills for Codex - version manager detection, authoritative resource map, and test framework reference",
+  "author": {
+    "name": "Stan Lo",
+    "email": "stan001212@gmail.com",
+    "url": "https://github.com/st0012"
+  },
+  "homepage": "https://github.com/st0012/ruby-skills",
+  "repository": "https://github.com/st0012/ruby-skills",
+  "license": "MIT",
+  "keywords": [
+    "ruby",
+    "rails",
+    "bundler",
+    "version-manager",
+    "testing",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Ruby Skills",
+    "shortDescription": "Ruby version, docs, and test framework guidance for Codex",
+    "longDescription": "Ruby Skills helps Codex detect Ruby version managers before running Ruby commands, use authoritative Ruby documentation sources, and avoid minitest versus test-unit API mixups.",
+    "developerName": "Stan Lo",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "defaultPrompt": [
+      "Use Ruby Skills before running this project's tests.",
+      "Use Ruby Skills to inspect this Ruby project's setup."
+    ],
+    "websiteURL": "https://github.com/st0012/ruby-skills",
+    "privacyPolicyURL": "https://github.com/st0012/ruby-skills",
+    "termsOfServiceURL": "https://github.com/st0012/ruby-skills",
+    "brandColor": "#CC342D"
+  }
+}
