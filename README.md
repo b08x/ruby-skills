@@ -19,6 +19,11 @@ claude plugin install ruby-skills@ruby-skills
 
 ```bash
 /plugin marketplace add st0012/ruby-skills
+```
+
+After the marketplace is added:
+
+```bash
 /plugin install ruby-skills@ruby-skills
 ```
 
