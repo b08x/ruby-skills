@@ -2,9 +2,11 @@
 
 Ruby's ecosystem has many version managers, a rapidly evolving typing and tooling landscape, and documentation scattered across multiple sources.
 
-This Claude Code plugin helps Claude navigate each of these — activating the correct Ruby environment, pointing to authoritative docs, and avoiding common test framework pitfalls.
+Ruby Skills helps coding agents navigate each of these — activating the correct Ruby environment, pointing to authoritative docs, and avoiding common test framework pitfalls.
 
 ## Installation
+
+### Claude Code
 
 **From terminal:**
 
@@ -20,9 +22,20 @@ claude plugin install ruby-skills@ruby-skills
 /plugin install ruby-skills@ruby-skills
 ```
 
+### Codex
+
+**From terminal:**
+
+```bash
+codex plugin marketplace add st0012/ruby-skills
+codex plugin add ruby-skills@ruby-skills
+```
+
+The Codex plugin exposes the same Ruby skills through Codex's skill loader. It does not use the Claude Code `SessionStart` hook.
+
 ## What to Expect
 
-After installation, start a Claude Code session in any Ruby project — no configuration needed. The plugin activates automatically.
+After installation, start an agent session in any Ruby project — no configuration needed. The relevant Ruby skills activate automatically.
 
 ### `ruby-version-manager`
 
